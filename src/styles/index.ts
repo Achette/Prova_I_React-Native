@@ -153,8 +153,6 @@ export const Bioperfil = styled.Text`
   text-align: center;
 `;
 
-
-
 export const Button = styled.TouchableOpacity`
   background-color: #272b33;
   border-radius: 10px;
@@ -169,8 +167,6 @@ export const ButtonText = styled.Text`
   font-weight: bold;
 `;
 
-
-
 export const AddButton = styled.TouchableOpacity`
   background-color: #272b33;
   border-radius: 10px;
@@ -180,8 +176,6 @@ export const AddButton = styled.TouchableOpacity`
   margin: 10px;
   justify-content: center;
 `;
-
-
 
 export const Card = styled.View`
   align-items: center;
@@ -197,16 +191,12 @@ export const CardContent = styled.View`
   width: 100%;
 `;
 
-
-
 export const CardInfos = styled.View`
   margin-top: 10px;
   width: 100%;
   align-items: left;
   padding-left: 20px;
 `;
-
-
 
 export const Status = styled.Text`
   font-size: 13px;

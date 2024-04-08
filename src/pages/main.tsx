@@ -20,11 +20,21 @@ import {
 } from '../styles';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {ActivityIndicator, Alert, Keyboard, Text, View} from 'react-native';
+import {ActivityIndicator, Alert, Keyboard} from 'react-native';
 
+type CharacterProps = {
+  id: string;
+  name: string;
+  status: string;
+  species: string;
+  image: string;
+  location: string;
+  episode: string;
+  created: string;
+};
 export const Main = ({navigation}: any) => {
   const [newCharacter, setNewCharacter] = React.useState('');
-  const [characters, setCharacters] = React.useState([]);
+  const [characters, setCharacters] = React.useState<CharacterProps[]>([]);
   const [isLoading, setIsLoading] = React.useState(false);
 
   React.useEffect(() => {
@@ -46,7 +56,6 @@ export const Main = ({navigation}: any) => {
     saveCharacters();
   }, [characters]);
 
-  
   const handleAddNewCharacter = React.useCallback(async () => {
     if (!newCharacter) Alert.alert('Digite um personagem para adicionar');
 

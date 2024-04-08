@@ -57,7 +57,10 @@ export const Main = ({navigation}: any) => {
   }, [characters]);
 
   const handleAddNewCharacter = React.useCallback(async () => {
-    if (!newCharacter) Alert.alert('Digite um personagem para adicionar');
+    if (!newCharacter) {
+      Alert.alert('Digite um personagem para adicionar');
+      return;
+    }
 
     try {
       setIsLoading(true);

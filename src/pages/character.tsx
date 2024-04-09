@@ -9,6 +9,7 @@ import {
   Status,
 } from '../styles';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import { StyleSheet } from 'react-native';
 
 export const Character = ({route}: any) => {
   const {name, status, species, image, location, episode, created} =
@@ -16,8 +17,8 @@ export const Character = ({route}: any) => {
   const localeDate = moment(created).format('MMMM Do YYYY, h:mm:ss a');
 
   return (
-    <Container>
-      <Card style={{width: '90%'}}>
+    <Container style={styles.container}>
+      <Card style={styles.card}>
         <Avatar source={{uri: image}} />
         <Name>{name}</Name>
         <LabelText>Created at</LabelText>
@@ -40,3 +41,14 @@ export const Character = ({route}: any) => {
     </Container>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: 'green',
+  },
+  card:{
+    backgroundColor: '#00ff0d',
+    borderColor: '#28a82e68',
+    borderWidth: 2,
+  }
+});

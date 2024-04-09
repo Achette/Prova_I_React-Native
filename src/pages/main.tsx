@@ -1,5 +1,5 @@
 import React from 'react';
-import {api} from '../services/api';
+import { api } from '../services/api';
 import {
   Avatar,
   Card,
@@ -20,7 +20,7 @@ import {
 } from '../styles';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {ActivityIndicator, Alert, Keyboard} from 'react-native';
+import { ActivityIndicator, Alert, Keyboard, StyleSheet } from 'react-native';
 
 type CharacterProps = {
   id: string;
@@ -32,7 +32,7 @@ type CharacterProps = {
   episode: string;
   created: string;
 };
-export const Main = ({navigation}: any) => {
+export const Main = ({ navigation }: any) => {
   const [newCharacter, setNewCharacter] = React.useState('');
   const [characters, setCharacters] = React.useState<CharacterProps[]>([]);
   const [isLoading, setIsLoading] = React.useState(false);
@@ -101,9 +101,10 @@ export const Main = ({navigation}: any) => {
   }, [newCharacter, characters]);
 
   return (
-    <Container>
+    <Container style={styles.container}>
       <Form>
         <Input
+          style={styles.input}
           autoCorrect={false}
           autoCapitalize="none"
           placeholder="Adicionar personagem"
@@ -112,7 +113,7 @@ export const Main = ({navigation}: any) => {
           returnKeyType="send"
           onSubmitEditing={handleAddNewCharacter}
         />
-        <SubmitButton loading={isLoading} onPress={handleAddNewCharacter}>
+        <SubmitButton style={styles.SubmitButton} loading={isLoading} onPress={handleAddNewCharacter}>
           {isLoading ? (
             <ActivityIndicator color="#fff" />
           ) : (
@@ -125,10 +126,10 @@ export const Main = ({navigation}: any) => {
         showsVerticalScrollIndicator={false}
         data={characters}
         keyExtractor={character => character.id}
-        renderItem={({item}) => (
-          <Card>
+        renderItem={({ item }) => (
+          <Card style={styles.card}>
             <CardContent>
-              <Avatar source={{uri: item.image}} />
+              <Avatar source={{ uri: item.image }} />
               <CardInfos>
                 <Name>{item.name}</Name>
                 <Status>
@@ -161,7 +162,7 @@ export const Main = ({navigation}: any) => {
                     characters.filter(character => character.id !== item.id),
                   );
                 }}
-                style={{backgroundColor: 'red', borderRadius: 10}}>
+                style={{ backgroundColor: 'red', borderRadius: 10 }}>
                 <CardButtonText>Excluir</CardButtonText>
               </CardButton>
             </CardButtons>
@@ -171,3 +172,29 @@ export const Main = ({navigation}: any) => {
     </Container>
   );
 };
+
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: 'green',
+  },
+  input: {
+    height: 40,
+    borderColor: 'gray',
+    borderWidth: 1,
+  },
+  SubmitButton: {
+    backgroundColor: '#00ff0d',
+    borderRadius: 5,
+  },
+  buttonText: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#fff',
+  },
+  card:{
+    backgroundColor: '#00ff0d',
+    borderColor: '#28a82e68',
+    borderWidth: 2,
+  }
+});
